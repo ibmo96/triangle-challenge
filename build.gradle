@@ -1,0 +1,42 @@
+plugins {
+	id 'java'
+
+    // Apply the application plugin to add support for building a CLI application
+    id 'application'
+	// Java Code Coverage
+    id "jacoco"
+
+	//mutation testing using PiTest
+	id 'info.solidsoft.pitest' version '1.5.1'
+}
+
+group = 'challenge.shape'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Use JUnit Jupiter API for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
+
+    // Use JUnit Jupiter Engine for testing.
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+}
+
+
+application {
+    // Define the main class for the application
+    mainClassName = 'challenge.shapes.Triangle'
+}
+
+test {
+	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+}
