@@ -65,7 +65,7 @@ public class Triangle extends Shape implements Comparable<Triangle> {
         }
 
 		// Check whether the lengths form a triangle or not (Triangle Inequality Theorem)
-		if ((a+b) <= c || (a+c) <= b || (b+c)  <= c){
+		if ((a+b) <= c || (a+c) <= b || (b+c) <= a){
 			throw new IllegalArgumentException("Arguments do not form a valid triangle");
 		}
         return new Triangle(a, b, c);
