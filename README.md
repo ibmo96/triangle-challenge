@@ -29,7 +29,7 @@ All fields are defined as final, making Triangle instances immutable. This imple
 The type of the Triangle (equilateral, isosceles or scalene) is implemented as an Enum. This increases the readability throughout the API. 
 
 ## Comparable interface 
-The Triangle class implements Comparable. This was done to facilitate the need of sorting and ordering in future development. Here, Triangles are sorted according the areas, but this can be changed. So for future use, if one had a list **`List<Triangle> triangles`** it would be enough to sort using **`Collections.sort(triangles)`**. 
+The Triangle class implements Comparable. This was done to facilitate the need of sorting and ordering in future development. Here, Triangles are sorted according to the areas, but this can be changed. So for future use, if one had a list **`List<Triangle> triangles`** it would be enough to sort using **`Collections.sort(triangles)`**. 
 
 
 # Using Gradle 
@@ -45,8 +45,7 @@ Gradle can be run using either the <tt> ./gradle </tt>  or <tt> ./gradlew </tt> 
 
 Gradle has built in support for compiling javadoc comments to html. If you run <br/>
 <tt> gradlew javadoc </tt> <br/>
-the html will be written to <tt> build/docs/javadoc/index.html </tt>. Use this to verify that your
-documentation of your public API is suffcient.
+the html will be written to <tt> build/docs/javadoc/index.html </tt>. 
 
 ## Unit Testing 
 
