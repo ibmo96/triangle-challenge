@@ -4,7 +4,10 @@ package challenge.shapes;
  * 
  * Triangle class. 
  * 
- * extends the abstract Shape class with 
+ * Distinguishes between Equilateral, Isosceles and Scalene triangles. 
+ * 
+ * extends the abstract Shape class and creates implementation for getArea. 
+ * Implements Comparable, comparing on area.  
  * 
  * @author Ibrahim Louay Mohammad
  *         
@@ -26,7 +29,6 @@ public class Triangle extends Shape implements Comparable<Triangle> {
         }
     }
 
-	
     // Length of three sides of triangle
     private final double a, b, c;
 
@@ -55,7 +57,7 @@ public class Triangle extends Shape implements Comparable<Triangle> {
      * @throws IllegalArgumentException if any of the parameters has
      * non-positive value, or these parameters could not form a valid triangle
      */
-    public static Triangle ofLengths(double a, double b, double c) {
+    public static synchronized Triangle createWithLengths(double a, double b, double c) {
         
         // Validate positiveness of the arguments
         if (Double.compare(a, 0.0) <= 0 || Double.compare(b, 0.0) <= 0 || Double.compare(c, 0.0) <= 0) {
@@ -67,17 +69,23 @@ public class Triangle extends Shape implements Comparable<Triangle> {
             throw new IllegalArgumentException("Arguments can not have infinite values");
         }
 
-        // Convert to double for accurate calculation
-        double tempA = double.valueOf(a);
-        double tempB = double.valueOf(b);
-        double tempC = double.valueOf(c);
+		// Check whether the lengths form a triangle or not (Triangle Inequality Theorem)
+		if ((a+b) <= c || (a+c) <= b || (b+c)  <= c){
+			throw new IllegalArgumentException("Arguments do not form a valid triangle");
+		}
+        return new Triangle(a, b, c);
+	}
+	
+	@Override
+	public double getArea() {
+		//calculate semiperimeter 
+		double semiPerimeter = (a+b+c)/2; 
 
-        // Check whether the lengths form a triangle or not
-        if (tempA.add(tempB).compareTo(tempC) <= 0 || tempA.add(tempC).compareTo(tempB) <= 0 || tempB.add(tempC).compareTo(tempA) <= 0) {
-            throw new IllegalArgumentException("Arguments do not form a valid triangle");
-        }
-        return new Triangle(tempA, tempB, tempC);
-    }
+		//Herons formula 
+		double area = Math.sqrt(semiPerimeter*((semiPerimeter-a)*(semiPerimeter-b)*(semiPerimeter-c))); 
+
+		return area; 
+	}
 
     /**
      * Returns type of triangle, based on length of its sides. Triangle can be
@@ -101,18 +109,20 @@ public class Triangle extends Shape implements Comparable<Triangle> {
      * 
      * @param other {@code Triangle} to which this {@code Triangle}
      *        is  to be compared
-     * @return -1, 0, or 1 as this if perimeter of this {@Triangle} is
+     * @return -1, 0, or 1 as this if area of this {@Triangle} is
      *          less than, equal to, or greater than {@code otherTriangle}
      */
     @Override
     public int compareTo(Triangle other) {
-        double currPerimeter = a.add(b).add(c);
-        double otherPerimeter = other.a.add(other.b).add(other.c);
-        return currPerimeter.compareTo(otherPerimeter);
+        double area = getArea(); 
+		double otherArea = other.getArea();
+		
+        return Double.compare(area, otherArea);
     }
 
     @Override
     public String toString() {
         return getType().name + " triangle (" + a + ", " + b + ", " + c + ")";
     }
+
 }

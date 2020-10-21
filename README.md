@@ -20,6 +20,13 @@ Gradle can be run using either the <tt> gradle </tt>  or <tt> gradlew </tt> comm
 Gradle can be run using either the <tt> ./gradle </tt>  or <tt> ./gradlew </tt> command. 
 
 
+## Static factory method vs public constructor 
+
+1. Factory methods for the construction of new Triangles provide 
+
+3. Another advantage is that for multithreaded systems, the static factory method can be synchronized, thereby providing thread-safety to the construction of new Triangle objects. 
+
+
 ## Javadoc 
 
 Gradle has built in support for compiling javadoc comments to html. If you run <br/>
