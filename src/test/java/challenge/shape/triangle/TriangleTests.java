@@ -14,6 +14,15 @@ class TriangleTests {
         Triangle.createWithLengths(5, 6.000001, 11);
         Triangle.createWithLengths(5.1, 6.81, 11.9);
 	}
+
+
+	@Test 
+	public void testAreaCalculation(){
+
+		assertEquals(Triangle.createWithLengths(5, 5, 5).getArea(), )
+	}
+
+
 	
 	@Test
     public void testGetType(){

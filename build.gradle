@@ -19,11 +19,17 @@ repositories {
 }
 
 dependencies {
+
 	// Use JUnit Jupiter API for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
 
     // Use JUnit Jupiter Engine for testing.
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+}
+
+//able to recieve command line input
+run {
+    standardInput = System.in
 }
 
 
@@ -34,7 +40,7 @@ application {
 
 test {
 	useJUnitPlatform()
-	finalizedBy jacocoTestReport
+	//finalizedBy jacocoTestReport
 }
 
 jacocoTestReport {
