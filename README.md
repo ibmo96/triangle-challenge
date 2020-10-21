@@ -10,21 +10,32 @@ Write a program that will determine the type of a triangle.
 ![alt tag](https://2.bp.blogspot.com/-9aI6coFWyf8/Uj721_acrfI/AAAAAAAAF60/w0l9iyaas5w/s1600/Triangle+sides.png)
 
 
+# Solution
 
-## Using Gradle 
+## Static factory method vs public constructor 
+
+1. Factory methods for the construction of new Triangles provide a better naming convention. They will describe exactly what is needed for the construction of a Triangle, so for a future implementation, one cound create a factory construction method **`createWithAngles(...)`** instead of **`createWithLengths(...)`**.
+
+2. Another advantage is that for multithreaded systems, the static factory method can be synchronized, thereby providing thread-safety to the construction of new Triangle objects. 
+
+
+## Immutable Triangle instances 
+All fields are defined as final, making Triangle instances immutable. This implementation extends what was discussed under the Static factory method section, providing a better foundation in case of future multi-threading. 
+
+## Enum for readability 
+The type of the Triangle (equilateral, isosceles or scalene) is implemented as an Enum. This increases the readability throughout the API. 
+
+## Comparable interface 
+The Triangle class implements Comparable. This was done to facilitate the need of sorting and ordering in future development. Here, Triangles are sorted according the areas, but this can be changed. 
+
+
+# Using Gradle 
 
 ### Windows 
 Gradle can be run using either the <tt> gradle </tt>  or <tt> gradlew </tt> command. 
 
 ### Linux and MacOS 
 Gradle can be run using either the <tt> ./gradle </tt>  or <tt> ./gradlew </tt> command. 
-
-
-## Static factory method vs public constructor 
-
-1. Factory methods for the construction of new Triangles provide 
-
-3. Another advantage is that for multithreaded systems, the static factory method can be synchronized, thereby providing thread-safety to the construction of new Triangle objects. 
 
 
 ## Javadoc 
