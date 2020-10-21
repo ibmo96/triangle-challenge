@@ -1,13 +1,18 @@
 package challenge.shape.triangle;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
+
 import challenge.shapes.Triangle;
 
 class TriangleTests {
 
+
+
 	@Test
-	public void testOf() {
+	public void successfulCreation() {
         Triangle.createWithLengths(5, 5, 5);
         Triangle.createWithLengths(100.00001, 900, 1000);
         Triangle.createWithLengths(5, 6.000001, 11);
@@ -15,11 +20,23 @@ class TriangleTests {
         Triangle.createWithLengths(5.1, 6.81, 11.9);
 	}
 
+	@Test 
+	public void unsuccessfulCreation1(){
+		Throwable exception = assertThrows(IllegalArgumentException.class, () -> Triangle.createWithLengths(-5, 5, 5));
+		assertEquals("Arguments can not have non-positive values", exception.getMessage());
+	}
+
+	public void unsuccessfulCreation2(){
+		Throwable exception = assertThrows(IllegalArgumentException.class, () -> Triangle.createWithLengths(2, 4, 10));
+		assertEquals("Arguments do not form a valid triangle", exception.getMessage());
+	}
+
 
 	@Test 
 	public void testAreaCalculation(){
 
-		assertEquals(Triangle.createWithLengths(5, 5, 5).getArea(), )
+		assertEquals(Triangle.createWithLengths(5, 5, 5).getArea(), 10.825317547305483); 
+		assertEquals(Triangle.createWithLengths(4, 4, 4).getArea(), 6.928203230275509); 
 	}
 
 

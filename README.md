@@ -12,6 +12,9 @@ Write a program that will determine the type of a triangle.
 
 # Solution
 
+## Shape abstract class
+The decision to create a Shape abstract class was to provide some functionality for extending the API with more shapes in the future. For now, the only method i would want in all shapes the **`getArea()`**, which is also an abstract class, leavning the implementation for the concrete class. 
+
 ## Static factory method vs public constructor 
 
 1. Factory methods for the construction of new Triangles provide a better naming convention. They will describe exactly what is needed for the construction of a Triangle, so for a future implementation, one cound create a factory construction method **`createWithAngles(...)`** instead of **`createWithLengths(...)`**.
@@ -26,7 +29,7 @@ All fields are defined as final, making Triangle instances immutable. This imple
 The type of the Triangle (equilateral, isosceles or scalene) is implemented as an Enum. This increases the readability throughout the API. 
 
 ## Comparable interface 
-The Triangle class implements Comparable. This was done to facilitate the need of sorting and ordering in future development. Here, Triangles are sorted according the areas, but this can be changed. 
+The Triangle class implements Comparable. This was done to facilitate the need of sorting and ordering in future development. Here, Triangles are sorted according the areas, but this can be changed. So for future use, if one had a list **`List<Triangle> triangles`** it would be enough to sort using **`Collections.sort(triangles)`**. 
 
 
 # Using Gradle 

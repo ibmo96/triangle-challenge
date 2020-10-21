@@ -64,11 +64,6 @@ public class Triangle extends Shape implements Comparable<Triangle> {
             throw new IllegalArgumentException("Arguments can not have non-positive values");
         }
 
-        // Validate finiteness of the arguments
-        if (!Double.isFinite(a) || !Double.isFinite(b) || !Double.isFinite(c)) {
-            throw new IllegalArgumentException("Arguments can not have infinite values");
-        }
-
 		// Check whether the lengths form a triangle or not (Triangle Inequality Theorem)
 		if ((a+b) <= c || (a+c) <= b || (b+c)  <= c){
 			throw new IllegalArgumentException("Arguments do not form a valid triangle");

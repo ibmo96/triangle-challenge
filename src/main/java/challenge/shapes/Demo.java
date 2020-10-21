@@ -16,6 +16,16 @@ public class Demo {
 
         boolean operational = true; 
 
+        /* double a = 4;  
+        double b =4;
+        double c = 4;
+
+        double semiPerimeter = (a+b+c)/2; 
+
+		//Herons formula 
+        double area = Math.sqrt(semiPerimeter*((semiPerimeter-a)*(semiPerimeter-b)*(semiPerimeter-c))); 
+        System.out.println(area);
+ */
         while (operational){
             String line = sc.nextLine(); 
             if (line.equals("quit")){
