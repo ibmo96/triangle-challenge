@@ -117,7 +117,7 @@ public class Triangle extends Shape implements Comparable<Triangle> {
 
     @Override
     public String toString() {
-        return getType().name + " triangle (" + a + ", " + b + ", " + c + ")";
+        return getType() + " triangle (" + a + ", " + b + ", " + c + ")";
     }
 
 }

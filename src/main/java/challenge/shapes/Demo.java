@@ -29,9 +29,15 @@ public class Demo {
             double b = Double.parseDouble(st.nextToken()); 
             double c = Double.parseDouble(st.nextToken()); 
 
-            Triangle temp = Triangle.createWithLengths(a, b, c);
+            try {
+                Triangle temp = Triangle.createWithLengths(a, b, c);
+                System.out.println(temp);
+            }catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+            
 
-            System.out.println(temp);
+            
 
         }
 
